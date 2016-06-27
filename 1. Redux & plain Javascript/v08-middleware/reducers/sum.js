@@ -8,9 +8,14 @@ function sum(currentState, action){
 
       case 'SUM': // look at Note2.1
         nextState = parseInt(action.a) + parseInt(action.b);
+        funcWithError()
         return nextState;// Note2.2
       default:
         nextState = currentState;
         return nextState;
     }
+}
+
+function funcWithError(){
+    throw Error('an error from sum')
 }

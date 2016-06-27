@@ -5,10 +5,12 @@
     <!--STEP 1.1-->
     <script src="https://npmcdn.com/redux@latest/dist/redux.min.js"></script>
     <!--~end STEP 1.1-->
+    <script src="_fakeServerApi/index.js"></script>
     <script src="actions/index.js"></script>
     <script src="reducers/counter.js"></script>
     <script src="reducers/sum.js"></script>
     <script src="reducers/index.js"></script>
+    <script src="middlewares/index.js"></script>
   </head>
   <body>
     <div>
@@ -16,6 +18,7 @@
         Clicked: <span id="value">0</span> times
         <button id="decrement">Decrease</button>
         <button id="incrementAsync">Increment async</button>
+        <br>CountStatus: <span id="status" style="color:blue"></span>
         <p>
         <input id="a" value="1"/> + <input id="b" value="2"/>
         = <span id="value2">?</span>
@@ -32,13 +35,7 @@
         })
       document.getElementById('incrementAsync')
         .addEventListener('click', function () {
-          setTimeout(
-            function increment () {
-              // step 2.1              
-              store.dispatch(increase());
-              // ~end step 2.1
-            }
-          , 1000); // execute increment () method after 1000 millisecond or 1 second
+          store.dispatch(asyncIncrease);
         })
       document.getElementById('sum')
         .addEventListener('click', function () {
