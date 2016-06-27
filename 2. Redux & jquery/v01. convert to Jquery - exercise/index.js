@@ -16,12 +16,12 @@ function render() {
     // image
     document.getElementById('imagesStatus').innerHTML = state.images.loading;
     if(state.images.loading =="loading…"){
-         document.getElementById('imagesList').innerHTML = "";
+         $('#imagesList').text("");
     }
      else if(state.images.loading =="loaded"){
          for(var i=0; i< state.images.data.length; i++){
-             document.getElementById('imagesList').innerHTML
-                   += ("<img src='"  + state.images.data[i].link + "' style='height:200px'>");
+             $('#imagesList').append(
+               "<img src='"  + state.images.data[i].link + "' style='height:200px'>");
          }
      }
 
