@@ -7,6 +7,7 @@ export default class Counter extends Component{
   }
   decrease() {
     this.setState({count: this.state.count - 1});
+    this.props.countDesc('Click "decrease" button');
   }
   render() {
     console.log('Counter.render()');
