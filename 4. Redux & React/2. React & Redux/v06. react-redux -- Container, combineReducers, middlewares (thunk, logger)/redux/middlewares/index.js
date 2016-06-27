@@ -1,14 +1,3 @@
-// middleware
-export const logger = store => next => action => {
-    console.group('logger')
-    console.log('currentState == ', store.getState());
-    console.info('next(action) // action == ', action)
-    next(action);
-    console.log('nextState == ', store.getState());
-    console.groupEnd('logger')
-}
-
-//second middleware
 export const crashReporter = store => next => action => {
     try{
         next(action);
@@ -20,11 +9,3 @@ export const crashReporter = store => next => action => {
     }
 
 }
-//third middleware
-export const thunk = store => next => action => {
-      if(typeof action === 'function'){
-          action(store.dispatch, store.getState());
-      }else{
-          next(action);
-      }
-  }
