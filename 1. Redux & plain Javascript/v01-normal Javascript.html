@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Redux basic example</title>
+  </head>
+  <body>
+    <div>
+      <p>
+        Clicked: <span id="value">0</span> times
+        <button id="decrement">Decrease</button>
+        <button id="incrementAsync">Increment async</button>
+      </p>
+    </div>
+    <script>
+      var valueEl = document.getElementById('value');
+      function render() {
+        valueEl.innerHTML = 0;
+      }
+      render();
+
+      document.getElementById('decrement')
+        .addEventListener('click', function () {
+            valueEl.innerHTML = valueEl.innerHTML - 1;
+        })
+      document.getElementById('incrementAsync')
+        .addEventListener('click', function () {
+          setTimeout(
+            function increment () {
+              valueEl.innerHTML = parseInt(valueEl.innerHTML) + 1;
+            }
+          , 1000); // execute increment () method after 1000 millisecond or 1 second
+        })
+    </script>
+  </body>
+</html>
