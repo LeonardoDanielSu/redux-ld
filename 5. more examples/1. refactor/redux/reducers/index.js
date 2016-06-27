@@ -1,12 +1,20 @@
-import counter from './counter'
-import images from './images'
-import sum from './sum'
+import counter from './examples01/counter'
+import images from './examples01/images'
+import sum from './examples01/sum'
 import { combineReducers } from 'redux'
 import {routerReducer } from 'react-router-redux'
 
 export default combineReducers({
-    count:counter,
-    sum,
-    images,
+    examples: combineReducers({
+        count:counter,
+        sum,
+        images
+    }),
+    // todos: combineReducers({
+        
+    // }),
+    // youtube: combineReducers({
+        
+    // }),
     routing: routerReducer
 })

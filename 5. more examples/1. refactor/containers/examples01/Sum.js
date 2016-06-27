@@ -1,5 +1,8 @@
+import { connect } from 'react-redux'
+import { getSum } from '../../redux/actions/index'
 import React, { Component } from 'react'
-export default class Sum extends Component{
+
+class Sum extends Component{
   constructor(props) {
     super(props)
     this.state = {a:1, b: 2}
@@ -19,3 +22,10 @@ export default class Sum extends Component{
     )
   }
 }
+
+export default  connect(
+  (state, ownProps) => ( {
+    sum: state.examples.sum
+  }),
+  {onSum: getSum}
+)(Sum)
