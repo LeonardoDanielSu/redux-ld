@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Redux basic example</title>
+    <!--STEP 1.1-->
+    <script src="https://npmcdn.com/redux@latest/dist/redux.min.js"></script>
+    <!--~end STEP 1.1-->
+  </head>
+  <body>
+    <div>
+      <p>
+        Clicked: <span id="value">?</span> times
+        <button id="decrement">Decrease</button>
+        <button id="incrementAsync">Increment async</button>
+      </p>
+    </div>
+    <script>
+      // step 1.2
+      console.group('Redux.createStore(REDUCER)')
+      var store = Redux.createStore(counter);
+      console.groupEnd('Redux.createStore(REDUCER)')
+      // ~end step 1.2
+      // step 1.3
+      var valueEl = document.getElementById('value');
+      function render() {
+        console.group('render()')
+        console.log('STATE == store.getState() == ', store.getState())
+        valueEl.innerHTML = store.getState().count;
+        console.groupEnd('render()')
+      }
+      render();
+      store.subscribe(render);
+      // ~end step 1.3
+      // step 2.2
+      function counter(currentState, action) { // REDUCER
+        var DEFAULT_STATE = {count:0};
+        console.group('REDUCER')
+        var nextState = Object.assign({}, currentState);
+        console.log('current STATE == ', currentState)
+        if(currentState === undefined){ // look at Note 1.1
+          nextState = DEFAULT_STATE; // Note 1.2
+          console.log('next STATE == ', nextState)
+          console.groupEnd('REDUCER')
+          return nextState;
+        }
+
+        switch(action.type){
+          case 'DECREMENT': // look at Note 2.1
+            nextState.count = currentState.count - 1;
+            console.log('next STATE == ', nextState)
+            console.groupEnd('REDUCER')
+            return nextState; // Note 2.2
+          default:
+            return nextState;
+        }
+      }
+      // ~end step 2.2
+      document.getElementById('decrement')
+        .addEventListener('click', function () {
+            // step 2.1
+            var action = {type: 'DECREMENT'}; // Note 2.1
+            console.log("");
+            console.group("store.dispatch(action)")
+            console.info("ACTION == ", action)
+            store.dispatch(action);
+            console.groupEnd("store.dispatch(action)")
+            // ~end step 2.1
+        })
+      document.getElementById('incrementAsync')
+        .addEventListener('click', function () {
+          setTimeout(
+            function increment () {
+              valueEl.innerHTML = parseInt(valueEl.innerHTML) + 1;
+            }
+          , 1000); // execute increment () method after 1000 millisecond or 1 second
+        })
+    </script>
+  </body>
+</html>
