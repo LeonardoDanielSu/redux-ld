@@ -2,22 +2,27 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
 class Examples extends Component {
-  func01() {
-    console.log("Hello from func01");
-    return "function of class"
+  constructor(props) {
+    super(props)
+    this.state = {count: 0, sum: 3, a:1, b: 2}
+    this.decrease = this.decrease.bind(this);
+  }
+  decrease() {
+    this.setState({count: this.state.count - 1});
   }
   render() {
-    const func02 = function(){
-      console.log("Hello from func02");
-      return "function in render()"
-    }
+    console.log('Examples.render()');
     return (
       <div>
-        <div>Simple React</div>
-        <div style={{color:"red"}}> Hello, world</div>
-        <div> { 1 + 1 }</div>
-        <div> {this.func01()} </div>
-        <div> {func02()} </div>
+        <h1>React</h1>
+        Clicked: <span>{this.state.count}</span> times
+        <button onClick={this.decrease}>Decrease</button>
+        <p/>
+        <input value={this.state.a} onChange={(e)=>this.setState({a: e.target.value})}/> 
+        + <input value={this.state.b} onChange={(e)=>this.setState({b: e.target.value})}/>
+        = <span>{this.state.sum}</span>
+        <button onClick={() => this.setState({sum: Number(this.state.a) + Number(this.state.b)})}>Sum</button>
+        <p/>
       </div>
     )
   }
