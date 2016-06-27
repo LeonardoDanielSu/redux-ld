@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Redux basic example</title>
+    <!--STEP 1.1-->
+    <script src="https://npmcdn.com/redux@latest/dist/redux.min.js"></script>
+    <!--~end STEP 1.1-->
+    <script src="_fakeServerApi/index.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="actions/index.js"></script>
+    <script src="reducers/counter.js"></script>
+    <script src="reducers/sum.js"></script>
+    <script src="reducers/index.js"></script>
+    <script src="middlewares/index.js"></script>
+  </head>
+  <body>
+    <div>
+      <p>
+        Clicked: <span id="value">0</span> times
+        <button id="decrement">Decrease</button>
+        <button id="incrementAsync">Increment async</button>
+        <br>CountStatus: <span id="status" style="color:blue"></span>
+        <p>
+        <input id="a" value="1"/> + <input id="b" value="2"/>
+        = <span id="value2">?</span>
+        <button id="sum">Sum</button>
+        <p>
+        <button id="randomImagesButton">Random Images></button>
+        <br>CountStatus: <span id="imagesStatus" style="color:blue"></span>
+        <p id="imagesList"></p>
+      </p>
+    </div>
+    <script>
+
+      document.getElementById('decrement')
+        .addEventListener('click', function () {
+          // step 2.1
+          store.dispatch(decrease());
+          // ~end step 2.1
+        })
+      document.getElementById('incrementAsync')
+        .addEventListener('click', function () {
+          store.dispatch(asyncIncrease);
+        })
+      document.getElementById('sum')
+        .addEventListener('click', function () {
+          var a = document.getElementById('a').value;
+          var b = document.getElementById('b').value;
+          // step 2.1
+          store.dispatch(getSum(a, b));
+          // ~end step 2.1
+        })
+      document.getElementById('randomImagesButton')
+        .addEventListener('click', function () {
+          store.dispatch(getRandomImages);
+        })
+    </script>
+    <script src="index.js"></script>
+  </body>
+</html>
