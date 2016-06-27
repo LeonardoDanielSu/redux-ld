@@ -8,15 +8,19 @@ export default class Examples extends Component {
     super(props) 
   }
   render() {
+    const {value:{count,sum, images}, 
+        onDecrement, 
+        onSum, 
+        onRandomImages} = this.props;
     return (
       <div>
         <h1>React</h1>
-        <Counter2 count={this.props.value.count} 
-            onDecrement={this.props.onDerement}/>
-        <Sum sum={this.props.value.sum} 
-            onSum={this.props.onSum}/>
-        <RandomImages images={this.props.value.images} 
-            onRandomImages={this.props.onRandomImages}/>
+        <Counter2 count={count} 
+            onDecrement={onDecrement}/>
+        <Sum sum={sum} 
+            onSum={onSum}/>
+        <RandomImages images={images} 
+            onRandomImages={onRandomImages}/>
       </div>
     )
   }

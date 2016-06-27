@@ -4,10 +4,11 @@ export default class Counter extends Component{
     super(props)
   }
   render() {
+    const {count:{result},onDecrement} = this.props;
     return (
       <div>
-        Clicked: <span>{this.props.count.result}</span> times
-        <button onClick={this.props.onDecrement}>Decrease</button>
+        Clicked: <span>{result}</span> times
+        <button onClick={onDecrement}>Decrease</button>
         <p/>
       </div>
     )
