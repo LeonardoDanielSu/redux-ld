@@ -33,20 +33,14 @@
     </div>
     <script>
 
-      $('#decrement').click(function () {
-          store.dispatch(decrease());
-        })
-      $('#incrementAsync').click(function () {
-          store.dispatch(asyncIncrease);
-        })
-      $('#sum').click(function() {
+      $('#decrement').click( () => store.dispatch(decrease()))
+      $('#incrementAsync').click(() => store.dispatch(asyncIncrease))
+      $('#sum').click(() => {
           var a = $('#a').val();
           var b = $('#b').val();
           store.dispatch(getSum(a, b));
         })
-      $('#randomImagesButton').click(function () {
-          store.dispatch(getRandomImages);
-        })
+      $('#randomImagesButton').click(() => store.dispatch(getRandomImages))
     </script>
     <script src="index.js"></script>
   </body>

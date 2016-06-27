@@ -4,7 +4,7 @@ var store = Redux.createStore(combineReducer, Redux.applyMiddleware(logger, cras
 // ~end step 1.2
 // step 1.3
 function render() {
-    var state = store.getState()
+    var state = store.getState();
     $('#value').text(state.count.result);
     $('#value2').text(state.sum);
 
