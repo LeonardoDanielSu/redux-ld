@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>const, let example 01</title>
+  </head>
+  <body>
+    <script>
+      function testLet(){
+        for(var i=0; i<1;i++){
+          var v = {a: "A"};
+          const co = {a: "A", c: "C"};
+          console.log("Block scope: ");
+          console.log("  var v = ", v);
+          co.a = "A 2"; // update property
+          co.b = "B"; // add property
+          delete co.c; // delete property
+          try{
+            co = {a:"A3"}
+          }catch(err){
+            console.error("  error because using 'co = ...' :", err)
+          }
+          console.log("  const co = ", co);
+        }
+        console.log("Function scope: ");
+        console.log("  var v = ", v);
+      //  console.log("  const co = ", co);// error
+      }
+      testLet();
+    </script>
+  </body>
+</html>

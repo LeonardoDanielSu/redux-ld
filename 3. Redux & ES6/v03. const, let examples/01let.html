@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>const, let example 01</title>
+  </head>
+  <body>
+    <script>
+      function testLet(){
+        for(var i=0; i<1;i++){
+          var v = {a: "A"};
+          let l = {a: "A"};
+          console.log("Block scope: ");
+          console.log("  var v = ", v);
+          console.log("  let l = ", l);
+        }
+        console.log("Function scope: ");
+        console.log("  var v = ", v);
+        //console.log("  let l = ", l);// error
+      }
+      testLet();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>const, let example 02</title>
+  </head>
+  <body>
+    <button class="but">button 0</button>
+    <button class="but">button 1</button>
+    <script>
+      var buttons = document.getElementsByClassName("but");
+      function applyLet(){
+        for(let i=0; i<2;i++){
+          buttons[i].addEventListener('click', function() {
+             console.log('You clicked button ' + i);
+          });
+        }
+        //console.log("i = ", i)
+      }
+      applyLet();
+
+    </script>
+  </body>
+</html>
