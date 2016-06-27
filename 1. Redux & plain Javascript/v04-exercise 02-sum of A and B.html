@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Redux basic example</title>
+    <!--STEP 1.1-->
+    <script src="https://npmcdn.com/redux@latest/dist/redux.min.js"></script>
+    <!--~end STEP 1.1-->
+  </head>
+  <body>
+    <div>
+      <p>
+        Clicked: <span id="value">0</span> times
+        <button id="decrement">Decrease</button>
+        <button id="incrementAsync">Increment async</button>
+      </p>
+    </div>
+    <script>
+      // step 1.2
+      var store = Redux.createStore(counter)
+      // ~end step 1.2
+      // step 1.3
+      var valueEl = document.getElementById('value');
+      function render() {
+         valueEl.innerHTML = store.getState().count;      };
+      store.subscribe(render);
+      // ~end step 1.3
+      render();
+
+      // step 2.2
+      function counter(currentState, action) {
+        var DEFAULT_STATE = {count:0};
+        var nextState = Object.assign({},currentState);
+        if (currentState === undefined) { // look at to Note 1.1
+
+          nextState = DEFAULT_STATE;// Note1.2
+          return nextState;
+        }
+        switch (action.type) {
+          case 'DECREMENT': // look at Note2.1
+            nextState.count = currentState.count - 1;
+            return nextState;// Note2.2
+          case 'INCREMENT': // look at Note2.1
+            nextState.count = currentState.count + 1;
+            return nextState;// Note2.2
+          default:
+            return nextState;
+        }
+      }
+      //~end step 2.2
+      document.getElementById('decrement')
+        .addEventListener('click', function () {
+          // step 2.1
+          var action = { type: 'DECREMENT' }; // Note2.1
+          store.dispatch(action);
+          // ~end step 2.1
+        })
+      document.getElementById('incrementAsync')
+        .addEventListener('click', function () {
+          setTimeout(
+            function increment () {
+              // step 2.1
+              var action = { type: 'INCREMENT' }; // Note2.1
+              store.dispatch(action);
+              // ~end step 2.1
+            }
+          , 1000); // execute increment () method after 1000 millisecond or 1 second
+        })
+    </script>
+  </body>
+</html>
