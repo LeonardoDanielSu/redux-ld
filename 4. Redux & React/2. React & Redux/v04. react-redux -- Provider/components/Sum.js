@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-export default class Sum extends Component{
+class Sum extends Component{
   constructor(props) {
     super(props)
     this.state = {a:1, b: 2}
@@ -19,3 +19,24 @@ export default class Sum extends Component{
     )
   }
 }
+
+import { connect } from 'react-redux'
+import { getSum } from '../redux/actions/index'
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    sum: state.sum
+  }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    onSum: (a,b) => dispatch(getSum(a, b))   
+  }
+}
+const SumContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Sum)
+
+export default SumContainer
