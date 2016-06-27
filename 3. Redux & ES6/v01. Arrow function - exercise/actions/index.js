@@ -7,9 +7,7 @@ var increase = function(){
     return { type: 'INCREMENT' };
 }
 
-var getSum = function(a, b){
-    return { type: 'SUM', a:a, b:b };
-}
+var getSum = (a, b) => ({ type: 'SUM', a:a, b:b });
 
 // ASYNC
 var asyncIncrease = function(dispatch, state){

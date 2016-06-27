@@ -1,15 +1,11 @@
 // middleware
-const logger = function(store){
-    return function(next){
-        return function(action){
-            console.group('logger')
-            console.log('currentState == ', store.getState());
-            console.info('next(action) // action == ', action)
-            next(action);
-            console.log('nextState == ', store.getState());
-            console.groupEnd('logger')
-        }
-    }
+const logger = store => next => action => {
+    console.group('logger')
+    console.log('currentState == ', store.getState());
+    console.info('next(action) // action == ', action)
+    next(action);
+    console.log('nextState == ', store.getState());
+    console.groupEnd('logger')
 }
 
 //second middleware

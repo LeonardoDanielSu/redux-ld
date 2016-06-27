@@ -40,8 +40,8 @@
           store.dispatch(asyncIncrease);
         })
       $('#sum').click(function() {
-          var a = $('#a').value;
-          var b = $('#b').value;
+          var a = $('#a').val();
+          var b = $('#b').val();
           store.dispatch(getSum(a, b));
         })
       $('#randomImagesButton').click(function () {
