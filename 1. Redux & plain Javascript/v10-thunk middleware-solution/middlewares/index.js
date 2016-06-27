@@ -24,7 +24,7 @@ const crashReporter = function(store){
                 console.error(err);
                 console.groupEnd('crashReporter');
             }
-            
+
         }
     }
 }
