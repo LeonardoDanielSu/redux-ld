@@ -11,9 +11,12 @@ export default class Examples extends Component {
     return (
       <div>
         <h1>React</h1>
-        <Counter2/>
-        <Sum/>
-        <RandomImages/>
+        <Counter2 count={this.props.value.count} 
+            onDecrement={this.props.onDerement}/>
+        <Sum sum={this.props.value.sum} 
+            onSum={this.props.onSum}/>
+        <RandomImages images={this.props.value.images} 
+            onRandomImages={this.props.onRandomImages}/>
       </div>
     )
   }
