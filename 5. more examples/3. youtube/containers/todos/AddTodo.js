@@ -18,11 +18,11 @@ class AddTodo extends Component {
     }
     return (
       <div>
-        <form onSubmit= { onAddTodo }> 
+        <form onSubmit= { onAddTodo }>
           <input value={todo} 
               onChange={(e)=>this.setState({todo: e.target.value})}/>      
           <button type="submit">
-              Add Todo
+            Add Todo
           </button>
         </form>
       </div>
