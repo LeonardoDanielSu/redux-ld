@@ -1,22 +1,29 @@
-import React from 'react'
+import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import { createStore } from 'redux'
-import Counter from './components/Counter'
-import counter from './reducers'
 
-const store = createStore(counter)
-const rootEl = document.getElementById('root')
-
-function render() {
-  ReactDOM.render(
-    <Counter
-      value={store.getState()}
-      onIncrement={() => store.dispatch({ type: 'INCREMENT' })}
-      onDecrement={() => store.dispatch({ type: 'DECREMENT' })}
-    />,
-    rootEl  
-  )
+class Examples extends Component {
+  func01() {
+    console.log("Hello from func01");
+    return "function of class"
+  }
+  render() {
+    const func02 = function(){
+      console.log("Hello from func02");
+      return "function in render()"
+    }
+    return (
+      <div>
+        <div>Simple React</div>
+        <div style={{color:"red"}}> Hello, world</div>
+        <div> { 1 + 1 }</div>
+        <div> {this.func01()} </div>
+        <div> {func02()} </div>
+      </div>
+    )
+  }
 }
 
-render()
-store.subscribe(render)
+ReactDOM.render(
+  <Examples/>,
+  document.getElementById('root')  
+)
