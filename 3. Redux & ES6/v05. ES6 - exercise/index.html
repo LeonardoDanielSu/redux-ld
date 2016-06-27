@@ -36,8 +36,8 @@
       $('#decrement').click( () => store.dispatch(decrease()))
       $('#incrementAsync').click(() => store.dispatch(asyncIncrease))
       $('#sum').click(() => {
-          var a = $('#a').val();
-          var b = $('#b').val();
+          const a = $('#a').val();
+          const b = $('#b').val();
           store.dispatch(getSum(a, b));
         })
       $('#randomImagesButton').click(() => store.dispatch(getRandomImages))
